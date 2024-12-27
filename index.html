@@ -35,7 +35,7 @@
           <span></span>
         </div>
 
-        <script src="js/script.js"></script>
+        <script src="/js/script.js"></script>
       </nav>
     </header>
 
@@ -44,7 +44,7 @@
       <div class="container">
         <h2>Home</h2>
         <div class="home-container">
-          <img class="home-item" src="img/pfp/1.jpg" alt="Profile" />
+          <img class="home-item" src="/img/pfp/1.jpg" alt="Profile" />
 
           <p class="home-item text">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Dolore,
@@ -120,11 +120,11 @@
           <div class="gallery-item">
             <li>
               <a href="#gambar-1">
-                <img src="img/thumbs/1.jpg" width="300" alt="Image 1" />
+                <img src="/img/thumbs/1.jpg" width="300" alt="Image 1" />
               </a>
               <a href="#gallery">
                 <div class="overlay" id="gambar-1">
-                  <img src="img/full/1.jpg" alt="Image 1" />
+                  <img src="/img/full/1.jpg" alt="Image 1" />
                 </div>
               </a>
             </li>
@@ -132,11 +132,11 @@
           <div class="gallery-item">
             <li>
               <a href="#gambar-2">
-                <img src="img/thumbs/2.jpg" width="300" alt="Image 2" />
+                <img src="/img/thumbs/2.jpg" width="300" alt="Image 2" />
               </a>
               <a href="#gallery">
                 <div class="overlay" id="gambar-2">
-                  <img src="img/full/2.jpg" alt="Image 2" />
+                  <img src="/img/full/2.jpg" alt="Image 2" />
                 </div>
               </a>
             </li>
@@ -144,11 +144,11 @@
           <div class="gallery-item">
             <li>
               <a href="#gambar-3">
-                <img src="img/thumbs/3.jpg" width="300" alt="Image 3" />
+                <img src="/img/thumbs/3.jpg" width="300" alt="Image 3" />
               </a>
               <a href="#gallery">
                 <div class="overlay" id="gambar-3">
-                  <img src="img/full/3.jpg" alt="Image 3" />
+                  <img src="/img/full/3.jpg" alt="Image 3" />
                 </div>
               </a>
             </li>
@@ -156,11 +156,11 @@
           <div class="gallery-item">
             <li>
               <a href="#gambar-4">
-                <img src="img/thumbs/4.jpg" width="300" alt="Image 4" />
+                <img src="/img/thumbs/4.jpg" width="300" alt="Image 4" />
               </a>
               <a href="#gallery">
                 <div class="overlay" id="gambar-4">
-                  <img src="img/full/4.jpg" alt="Image 4" />
+                  <img src="/img/full/4.jpg" alt="Image 4" />
                 </div>
               </a>
             </li>
@@ -168,11 +168,11 @@
           <div class="gallery-item">
             <li>
               <a href="#gambar-5">
-                <img src="img/thumbs/5.jpg" width="300" alt="Image 5" />
+                <img src="/img/thumbs/5.jpg" width="300" alt="Image 5" />
               </a>
               <a href="#gallery">
                 <div class="overlay" id="gambar-5">
-                  <img src="img/full/5.jpg" alt="Image 5" />
+                  <img src="/img/full/5.jpg" alt="Image 5" />
                 </div>
               </a>
             </li>
@@ -185,12 +185,52 @@
     <section id="contact" class="section">
       <div class="container">
         <h2>Contact</h2>
+        <form name="submit-to-google-sheet">
+          <div class="contact-element">
+            <label for="nama">Nama</label>
+            <input type="text" id="nama" name="nama" placeholder="Nama" />
+          </div>
+
+          <div class="contact-element">
+            <label for="email">Email</label>
+            <input
+              type="email"
+              required
+              id="email"
+              name="email"
+              placeholder="Email@anda.com"
+            />
+          </div>
+
+          <div class="contact-element">
+            <label for="pesan">Pesan</label>
+            <textarea name="pesan" id="pesan" placeholder="Pesan"></textarea>
+          </div>
+
+          <div class="contact-element submit">
+            <button type="submit">Submit</button>
+          </div>
+        </form>
       </div>
     </section>
 
     <!-- Footer -->
     <footer>
-      <p>2024 Portfolio. All rights reserved.</p>
+      <p>Made with confusion 😵‍💫. All rights reserved.</p>
     </footer>
+
+    <!-- script form -->
+    <script>
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbxgEBFLCsFcS0TgaDW7lUBtaYz6LeSh-7hU0JohPQBzjLJwrbOQMhBoxIa84QCQQxlQcQ/exec";
+      const form = document.forms["submit-to-google-sheet"];
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => console.log("Success!", response))
+          .catch((error) => console.error("Error!", error.message));
+      });
+    </script>
   </body>
 </html>
